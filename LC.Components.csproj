@@ -6,17 +6,18 @@
     <Authors>Stein Lundbeck</Authors>
     <Company>Lundbeck Consulting</Company>
     <Product>Different shared components for .NET and .NET Core</Product>
-    <Description>Shared basic functions to make developing of new elements easier</Description>
+    <Description>Shared base classess and repos designed to help making .NET and ASP.NET Core components</Description>
     <Copyright>2020</Copyright>
     <PackageProjectUrl>https://lundbeckconsulting.no</PackageProjectUrl>
     <PackageIcon>lc-logo-md.png</PackageIcon>
-    <PackageTags>.NET, .NET Core, ASP.NET Core, Lundbeck Consulting, Components</PackageTags>
+    <PackageTags>.NET, .NET Core, ASP.NET Core, .NET Standard, Lundbeck Consulting, Components</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/lundbeckconsulting/Components</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
     <RepositoryType>.NET Standard</RepositoryType>
+    <RootNamespace>LundbeckConsulting.Components</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
