@@ -9,17 +9,18 @@
     <Description>Shared basic functions to make developing of new elements easier</Description>
     <Copyright>2020</Copyright>
     <PackageProjectUrl>https://lundbeckconsulting.no</PackageProjectUrl>
-    <PackageIcon>lc-logo-xxs.png</PackageIcon>
+    <PackageIcon>lc-logo-md.png</PackageIcon>
     <PackageTags>.NET, .NET Core, ASP.NET Core, Lundbeck Consulting, Components</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
     <RepositoryUrl>https://github.com/lundbeckconsulting/Components</RepositoryUrl>
     <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <RepositoryType>.NET Standard</RepositoryType>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-xxs.png">
+    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-md.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
