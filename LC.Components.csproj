@@ -1,0 +1,39 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+    <Version>1.0.2</Version>
+    <Authors>Stein Lundbeck</Authors>
+    <Company>Lundbeck Consulting</Company>
+    <Product>Different shared components for .NET and .NET Core</Product>
+    <Description>Shared basic functions to make developing of new elements easier</Description>
+    <Copyright>2020</Copyright>
+    <PackageProjectUrl>https://lundbeckconsulting.no</PackageProjectUrl>
+    <PackageIcon>lc-logo-xxs.png</PackageIcon>
+    <PackageTags>.NET, .NET Core, ASP.NET Core, Lundbeck Consulting, Components</PackageTags>
+    <NeutralLanguage>en</NeutralLanguage>
+    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <RepositoryUrl>https://github.com/lundbeckconsulting/Components</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-xxs.png">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+    <None Include="LICENSE.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="License.md">
+      <Pack>True</Pack>
+      <PackagePath></PackagePath>
+    </None>
+  </ItemGroup>
+
+</Project>
