@@ -6,7 +6,7 @@
 
 using System;
 
-namespace LundbeckConsulting.Components.Core.Data
+namespace LundbeckConsulting.Components.Data
 {
     public interface IDataEntityBase
     {

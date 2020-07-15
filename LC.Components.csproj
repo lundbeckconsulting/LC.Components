@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk">
+﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
@@ -6,36 +6,47 @@
     <Authors>Stein Lundbeck</Authors>
     <Company>Lundbeck Consulting</Company>
     <Product>Different shared components for .NET and .NET Core</Product>
-    <Description>Shared base classess and repos designed to help making .NET and ASP.NET Core components</Description>
+    <Description>Shared base classes and repos designed to help making custom .NET and ASP.NET Core components</Description>
     <Copyright>2020</Copyright>
     <PackageProjectUrl>https://lundbeckconsulting.no</PackageProjectUrl>
     <PackageIcon>lc-logo-md.png</PackageIcon>
     <PackageTags>.NET, .NET Core, ASP.NET Core, .NET Standard, Lundbeck Consulting, Components</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
-    <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
+    <PackageLicenseFile>LICENSE</PackageLicenseFile>
     <RepositoryUrl>https://github.com/lundbeckconsulting/Components</RepositoryUrl>
-    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
     <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
-    <RepositoryType>.NET Standard</RepositoryType>
+    <RepositoryType>.NET Standard class library</RepositoryType>
     <RootNamespace>LundbeckConsulting.Components</RootNamespace>
+    <PackageLicenseExpression></PackageLicenseExpression>
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-md.png">
-      <Pack>True</Pack>
-      <PackagePath></PackagePath>
-    </None>
-    <None Include="LICENSE.md">
+    <None Remove="LICENSE.md" />
+    <None Remove="LICENSE.md" />
+    <None Include="LICENSE">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
   </ItemGroup>
 
   <ItemGroup>
-    <None Update="License.md">
+    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-md.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNet.Identity.EntityFramework" Version="2.2.3" />
+    <PackageReference Include="Microsoft.AspNet.WebPages" Version="3.2.7" />
+    <PackageReference Include="Microsoft.AspNetCore.Html.Abstractions" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc" Version="2.2.0" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor" Version="2.2.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="3.1.5" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="3.1.5" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Core" Version="3.1.6" />
+    <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.6" />
   </ItemGroup>
 
 </Project>

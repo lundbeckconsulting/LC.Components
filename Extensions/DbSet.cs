@@ -1,9 +1,9 @@
 ﻿/*
-    @Date			 : 28.11.2019
+    @Date			 : 14.07.2020
     @Author			 : Stein Lundbeck
 */
 
-using LundbeckConsulting.Components.Core.Data;
+using LundbeckConsulting.Components.Data;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
