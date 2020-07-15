@@ -3,7 +3,7 @@
     @Author			 : Stein Lundbeck
 */
 
-using LundbeckConsulting.Components.Core.Data.Models;
+using LundbeckConsulting.Components.Data;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
@@ -19,7 +19,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="coll">Collection to process</param>
         /// <param name="items">Elements to replace content with</param>
         /// <returns>Collection with items</returns>
-        public static ICollection<TEntity> Replace<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items) where TEntity : class
+        public static ICollection<TEntity> Replace<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items)
         {
             coll.Clear();
             coll.AddRange(items);
@@ -34,24 +34,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="coll">Collection to add to</param>
         /// <param name="items">Items to add to the collection</param>
         /// <returns>The collection with the specified items added</returns>
-        public static ICollection<TEntity> AddRange<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items) where TEntity : class
-        {
-            foreach(TEntity item in items)
-            {
-                coll.Add(item);
-            }
-
-            return coll;
-        }
-
-        /// <summary>
-        /// Adds the specified items to a ICollection of base type
-        /// </summary>
-        /// <typeparam name="TEntity">Base type of entity</typeparam>
-        /// <param name="coll">Collection to add items to</param>
-        /// <param name="items">Elements to add</param>
-        /// <returns>The collection with the items added</returns>
-        public static ICollection<TEntity> AddRangeBase<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items) where TEntity : class
+        public static ICollection<TEntity> AddRange<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items)
         {
             foreach(TEntity item in items)
             {
@@ -69,7 +52,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="start">Start index</param>
         /// <param name="end">End index</param>
         /// <returns>A collection with remaining elements</returns>
-        public static ICollection<TEntity> RemoveRange<TEntity>(this ICollection<TEntity> coll, int start, int end) where TEntity : class
+        public static ICollection<TEntity> RemoveRange<TEntity>(this ICollection<TEntity> coll, int start, int end)
         {
             ICollection<TEntity> result = new Collection<TEntity>();
 
