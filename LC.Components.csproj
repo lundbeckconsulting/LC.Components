@@ -19,6 +19,7 @@
     <RepositoryType>.NET Standard class library</RepositoryType>
     <RootNamespace>LundbeckConsulting.Components</RootNamespace>
     <PackageLicenseExpression></PackageLicenseExpression>
+    <ApplicationIcon>lc-logo-min.ico</ApplicationIcon>
   </PropertyGroup>
 
   <ItemGroup>
