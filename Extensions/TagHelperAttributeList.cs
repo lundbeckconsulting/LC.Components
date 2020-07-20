@@ -20,7 +20,7 @@ namespace LundbeckConsulting.Components.Extensions
         {
             ICollection<KeyValuePair<string, string>> result = new Collection<KeyValuePair<string, string>>();
 
-            foreach(TagHelperAttribute attr in list)
+            foreach (TagHelperAttribute attr in list)
             {
                 result.Add(new KeyValuePair<string, string>(attr.Name, attr.Value.ToString()));
             }

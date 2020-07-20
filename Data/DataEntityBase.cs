@@ -14,12 +14,12 @@ namespace LundbeckConsulting.Components.Data
         /// Entity id
         /// </summary>
         int Id { get; set; }
-        
+
         /// <summary>
         /// Entity unique id
         /// </summary>
         Guid UId { get; set; }
-        
+
         /// <summary>
         /// Date the entity was created
         /// </summary>

@@ -77,7 +77,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="obj">Element to compare against</param>
         /// <param name="compare">Elements to compare</param>
         /// <returns>True if obj equals compare</returns>
-        public static bool Equal(this object obj, object compare) => !obj.Null() && !compare.Null() && obj.ToString().ToNormalized() == compare.ToString().ToNormalized();
+        public static bool Equal(this object obj, object compare) => !obj.Null() && !compare.Null() && obj.ToNormalized() == compare.ToNormalized();
 
         /// <summary>
         /// Determines if objects are equal to current object
@@ -112,5 +112,11 @@ namespace LundbeckConsulting.Components.Extensions
         /// </summary>
         /// <returns>String value of object in upper casev</returns>
         public static string ToUpper(this object obj) => obj.ToString().ToUpper();
+
+        /// <summary>
+        /// Element as normalized string
+        /// </summary>
+        /// <returns>Normalized string value of object</returns>
+        public static string ToNormalized(this object obj) => obj.ToString().ToNormalized();
     }
 }

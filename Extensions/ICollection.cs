@@ -36,7 +36,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <returns>The collection with the specified items added</returns>
         public static ICollection<TEntity> AddRange<TEntity>(this ICollection<TEntity> coll, IEnumerable<TEntity> items)
         {
-            foreach(TEntity item in items)
+            foreach (TEntity item in items)
             {
                 coll.Add(item);
             }
@@ -56,7 +56,7 @@ namespace LundbeckConsulting.Components.Extensions
         {
             ICollection<TEntity> result = new Collection<TEntity>();
 
-            for(int i = 0; i < coll.Count; i++)
+            for (int i = 0; i < coll.Count; i++)
             {
                 if (i < start || i > end)
                 {

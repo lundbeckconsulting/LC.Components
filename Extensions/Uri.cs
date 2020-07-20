@@ -95,7 +95,7 @@ namespace LundbeckConsulting.Components.Extensions
             tmp += uri.GetComponents(UriComponents.Query, UriFormat.UriEscaped).Length > 0 ? "&" : "?";
             tmp += $"{name}={value}";
 
-            return new Uri(tmp);            
+            return new Uri(tmp);
         }
 
         /// <summary>

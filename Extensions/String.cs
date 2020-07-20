@@ -178,7 +178,7 @@ namespace LundbeckConsulting.Components.Extensions
                 result = str.StartsWith("https");
             }
 
-            if(!result)
+            if (!result)
             {
                 result = str.StartsWith("www");
             }
@@ -265,7 +265,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// </summary>
         /// <param name="str">String to manipulate</param>
         /// <param name="separator">Separators used to split the string</param>
-        public static IEnumerable<string> ToEnumerable(this string str, char[] separator) 
+        public static IEnumerable<string> ToEnumerable(this string str, char[] separator)
         {
             ICollection<string> coll = new Collection<string>();
             string[] tmp = str.Split(separator, StringSplitOptions.RemoveEmptyEntries);
@@ -343,7 +343,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="oldValue">Value to remove</param>
         /// <returns>String without any occurrences of oldValue</returns>
         public static string Replace(this string str, string oldValue) => str.Replace(oldValue, default);
-   }
+    }
 
     /// <summary>
     /// The transform types

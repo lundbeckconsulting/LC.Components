@@ -24,6 +24,12 @@ namespace LundbeckConsulting.Components.Extensions
         public static string ToUpper<TEntity>(this TEntity source) where TEntity : Enum, IConvertible => source.ToString().ToUpper();
 
         /// <summary>
+        /// Normalizes the entity value
+        /// </summary>
+        /// <returns>Enum element as normalized</returns>
+        public static string ToNormalized<TEntity>(this TEntity source) where TEntity : Enum, IConvertible => source.ToString().ToNormalized();
+
+        /// <summary>
         /// Returns all values in an enum.
         /// </summary>
         /// <remarks>This is not an extension but a static function</remarks>

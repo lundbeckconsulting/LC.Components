@@ -28,7 +28,7 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="attributes">Elements to add</param>
         public static Microsoft.AspNetCore.Mvc.ViewFeatures.AttributeDictionary Add(this Microsoft.AspNetCore.Mvc.ViewFeatures.AttributeDictionary dict, IDictionary<string, string> attributes)
         {
-            foreach(KeyValuePair<string, string> att in attributes)
+            foreach (KeyValuePair<string, string> att in attributes)
             {
                 dict.Add(new TagHelperAttribute(att.Key, att.Value));
             }

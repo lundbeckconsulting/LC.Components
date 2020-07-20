@@ -132,13 +132,28 @@ namespace LundbeckConsulting.Components.Extensions
         /// </summary>
         /// <param name="coll">Items to convert</param>
         /// <returns>An IEnumerable with string values populated by collection</returns>
-        public static IEnumerable<string> ToStrings<TEntity>(this IEnumerable<TEntity> coll) where TEntity : class
+        public static IEnumerable<string> ToStrings<TEntity>(this IEnumerable<TEntity> coll) => coll.ToStrings(false);
+
+        /// <summary>
+        /// Converts all values to strings or normalized strings
+        /// </summary>
+        /// <param name="coll">Items to convert</param>
+        /// <param name="normalized">If true values will be normalized</param>
+        /// <returns>An IEnumerable with string values populated by collection</returns>
+        public static IEnumerable<string> ToStrings<TEntity>(this IEnumerable<TEntity> coll, bool normalized)
         {
             ICollection<string> result = new Collection<string>();
 
             foreach (TEntity i in coll)
             {
-                result.Add(i.ToString());
+                if (normalized)
+                {
+                    result.Add(i.ToString().ToNormalized());
+                }
+                else
+                {
+                    result.Add(i.ToString());
+                }
             }
 
             return result;

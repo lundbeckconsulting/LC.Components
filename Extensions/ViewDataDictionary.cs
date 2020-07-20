@@ -59,7 +59,7 @@ namespace LundbeckConsulting.Components.Extensions
             {
                 int i = 0;
 
-                foreach(object val in view.Values)
+                foreach (object val in view.Values)
                 {
                     if (i == index)
                     {
