@@ -2,14 +2,14 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard2.1</TargetFramework>
-    <Version>1.0.2</Version>
+    <Version>1.0.2.0-beta</Version>
     <Authors>Stein Lundbeck</Authors>
     <Company>Lundbeck Consulting</Company>
     <Product>Different shared components for .NET and .NET Core</Product>
     <Description>Shared base classes and repos designed to help making custom .NET and ASP.NET Core components</Description>
     <Copyright>2020</Copyright>
     <PackageProjectUrl>https://lundbeckconsulting.no</PackageProjectUrl>
-    <PackageIcon>lc-logo-md.png</PackageIcon>
+    <PackageIcon>lc-components-logo-md.png</PackageIcon>
     <PackageTags>.NET, .NET Core, ASP.NET Core, .NET Standard, Lundbeck Consulting, Components</PackageTags>
     <NeutralLanguage>en</NeutralLanguage>
     <PackageLicenseFile>LICENSE.md</PackageLicenseFile>
@@ -20,6 +20,7 @@
     <RootNamespace>LundbeckConsulting.Components</RootNamespace>
     <PackageLicenseExpression></PackageLicenseExpression>
     <ApplicationIcon>lc-logo-min.ico</ApplicationIcon>
+    <PackageReleaseNotes>First beta</PackageReleaseNotes>
   </PropertyGroup>
 
   <ItemGroup>
@@ -32,7 +33,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-logo-md.png">
+    <None Include="..\..\Misc\LC.Shared\IMAGE\lc-components-logo-md.png">
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
