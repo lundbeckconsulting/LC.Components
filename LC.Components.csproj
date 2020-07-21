@@ -19,7 +19,7 @@
     <RepositoryType>.NET Standard class library</RepositoryType>
     <RootNamespace>LundbeckConsulting.Components</RootNamespace>
     <PackageLicenseExpression></PackageLicenseExpression>
-    <ApplicationIcon>lc-logo-min.ico</ApplicationIcon>
+    <ApplicationIcon>lc-logo.ico</ApplicationIcon>
     <PackageReleaseNotes>First beta</PackageReleaseNotes>
   </PropertyGroup>
 
@@ -49,4 +49,11 @@
     <PackageReference Include="Microsoft.Extensions.Identity.Stores" Version="3.1.6" />
   </ItemGroup>
 
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.FxCopAnalyzers" Version="3.0.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+  
 </Project>
