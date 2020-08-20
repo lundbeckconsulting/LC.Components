@@ -14,29 +14,29 @@ namespace LundbeckConsulting.Components
         /// <summary>
         /// The File Endings of the file type
         /// </summary>
-        IEnumerable<FileEndings> Files { get; }
+        IEnumerable<FileEnding> Files { get; }
 
         /// <summary>
         /// The File Group the file belongs to
         /// </summary>
-        FileGroups Group { get; }
+        FileGroup Group { get; }
 
         /// <summary>
         /// Type of file
         /// </summary>
-        FileTypes FileType { get; }
+        FileType FileType { get; }
 
         /// <summary>
         /// The Image File Ending if current file is in the Image group
         /// </summary>
-        ImageFileEndings ImageFile { get; }
+        ImageFileEnding ImageFile { get; }
 
         /// <summary>
         /// Indicates if a File Ending exists in current collection
         /// </summary>
         /// <param name="fileEnding">Type of file ending</param>
         /// <returns>True if File Ending exists</returns>
-        bool FileEndingExists(FileEndings fileEnding);
+        bool FileEndingExists(FileEnding fileEnding);
 
         /// <summary>
         /// Indicates if a File Ending exists in current collection
@@ -51,10 +51,10 @@ namespace LundbeckConsulting.Components
     /// </summary>
     public sealed class FileTypeInfo : IFileTypeInfo
     {
-        private readonly ICollection<FileEndings> _files = new Collection<FileEndings>();
-        private readonly FileGroups _group;
-        private readonly FileTypes _type;
-        private readonly ImageFileEndings _img;
+        private readonly ICollection<FileEnding> _files = new Collection<FileEnding>();
+        private readonly FileGroup _group;
+        private readonly FileType _type;
+        private readonly ImageFileEnding _img;
 
         /// <summary>
         /// Default element for known single file type
@@ -62,7 +62,7 @@ namespace LundbeckConsulting.Components
         /// <param name="ending">Value of file ending</param>
         /// <param name="group">Group the file belongs to</param>
         /// <param name="fileType">Type of file</param>
-        public FileTypeInfo(FileEndings file, FileGroups group, FileTypes fileType) : this(new FileEndings[] { file }, group, fileType)
+        public FileTypeInfo(FileEnding file, FileGroup group, FileType fileType) : this(new FileEnding[] { file }, group, fileType)
         {
 
         }
@@ -75,68 +75,68 @@ namespace LundbeckConsulting.Components
         /// <param name="files">Value of multiple file endings</param>
         /// <param name="group">Group the file belongs to</param>
         /// <param name="fileType">Type of file</param>
-        public FileTypeInfo(IEnumerable<FileEndings> files, FileGroups group, FileTypes fileType)
+        public FileTypeInfo(IEnumerable<FileEnding> files, FileGroup group, FileType fileType)
         {
             _files.AddRange(files);
             _group = group;
             _type = fileType;
-            _img = ImageFileEndings.None;
+            _img = ImageFileEnding.None;
         }
 
         /// <summary>
         /// Element for image file endings
         /// </summary>
         /// <param name="imageEnding">Image file ending</param>
-        public FileTypeInfo(ImageFileEndings imageEnding)
+        public FileTypeInfo(ImageFileEnding imageEnding)
         {
-            FileEndings ending = FileEndings.Unknown;
+            FileEnding ending = FileEnding.Unknown;
 
             switch (imageEnding)
             {
-                case ImageFileEndings.JointPhotographicGroup:
-                    _files.AddRange(new FileEndings[] { FileEndings.JPG, FileEndings.JPEG });
+                case ImageFileEnding.JointPhotographicGroup:
+                    _files.AddRange(new FileEnding[] { FileEnding.JPG, FileEnding.JPEG });
                     break;
 
-                case ImageFileEndings.TaggedImageFileFormat:
-                    _files.AddRange(new FileEndings[] { FileEndings.TIF, FileEndings.TIFF });
+                case ImageFileEnding.TaggedImageFileFormat:
+                    _files.AddRange(new FileEnding[] { FileEnding.TIF, FileEnding.TIFF });
                     break;
 
-                case ImageFileEndings.GraphicsInterchangeFormat:
-                    _files.Add(FileEndings.GIF);
+                case ImageFileEnding.GraphicsInterchangeFormat:
+                    _files.Add(FileEnding.GIF);
                     break;
 
-                case ImageFileEndings.Bitmap:
-                    _files.Add(FileEndings.BMP);
+                case ImageFileEnding.Bitmap:
+                    _files.Add(FileEnding.BMP);
                     break;
 
-                case ImageFileEndings.Icon:
-                    _files.Add(FileEndings.ICO);
+                case ImageFileEnding.Icon:
+                    _files.Add(FileEnding.ICO);
                     break;
 
-                case ImageFileEndings.Photoshop:
-                    _files.Add(FileEndings.PSD);
+                case ImageFileEnding.Photoshop:
+                    _files.Add(FileEnding.PSD);
                     break;
 
-                case ImageFileEndings.PortableNetworkGraphics:
-                    _files.Add(FileEndings.PNG);
+                case ImageFileEnding.PortableNetworkGraphics:
+                    _files.Add(FileEnding.PNG);
                     break;
 
-                case ImageFileEndings.ScalableVectorGraphics:
-                    _files.Add(FileEndings.SVG);
+                case ImageFileEnding.ScalableVectorGraphics:
+                    _files.Add(FileEnding.SVG);
                     break;
             }
 
             _files.Add(ending);
             _img = imageEnding;
-            _group = FileGroups.Image;
-            _type = FileTypes.Image;
+            _group = FileGroup.Image;
+            _type = FileType.Image;
         }
 
-        public IEnumerable<FileEndings> Files => _files;
-        public FileGroups Group => _group;
-        public FileTypes FileType => _type;
-        public ImageFileEndings ImageFile => _img;
-        public bool FileEndingExists(FileEndings fileEnding) => _files.Contains(fileEnding);
+        public IEnumerable<FileEnding> Files => _files;
+        public FileGroup Group => _group;
+        public FileType FileType => _type;
+        public ImageFileEnding ImageFile => _img;
+        public bool FileEndingExists(FileEnding fileEnding) => _files.Contains(fileEnding);
         public bool FileEndingExists(string fileEnding) => _files.ToStrings().Exists(str => str == fileEnding);
     }
 }

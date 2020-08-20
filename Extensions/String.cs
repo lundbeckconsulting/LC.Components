@@ -343,6 +343,25 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="oldValue">Value to remove</param>
         /// <returns>String without any occurrences of oldValue</returns>
         public static string Replace(this string str, string oldValue) => str.Replace(oldValue, default);
+
+        /// <summary>
+        /// Get the enum item with equal name
+        /// </summary>
+        /// <typeparam name="TEnum">Type of enum to process</typeparam>
+        /// <param name="str">The value to look for</param>
+        /// <param name="exceptionIfNotFound">If true throws an exception if no equal enum item are found</param>
+        /// <returns>An enum item element equal to string. Returns default if not found</returns>
+        public static TEnum GetEnumItem<TEnum>(this string str, bool exceptionIfNotFound = false) where TEnum : Enum, IConvertible
+        {
+            var tmp = EnumExtensions.GetItem<TEnum>(str);
+
+            if (tmp.Null())
+            {
+                throw new ArgumentException($"Can't find value named {str} in the {nameof(TEnum)} enum");
+            }
+
+            return tmp;
+        }
     }
 
     /// <summary>

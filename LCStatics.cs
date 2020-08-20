@@ -21,27 +21,27 @@ namespace LundbeckConsulting.Components
         /// </summary>
         private readonly static ICollection<IFileTypeInfo> FileTypeDB = new Collection<IFileTypeInfo>()
             {
-                new FileTypeInfo(FileEndings.CSS, FileGroups.Code, FileTypes.Style),
-                new FileTypeInfo(FileEndings.SCSS, FileGroups.Code, FileTypes.SASS),
-                new FileTypeInfo(FileEndings.JS, FileGroups.Code, FileTypes.JavaScript),
-                new FileTypeInfo(FileEndings.CSHTML, FileGroups.Code, FileTypes.View),
-                new FileTypeInfo(FileEndings.CS, FileGroups.Code, FileTypes.CSharp),
-                new FileTypeInfo(FileEndings.RESX, FileGroups.Resource, FileTypes.XML),
-                new FileTypeInfo(FileEndings.PDF, FileGroups.Document, FileTypes.PDF),
-                new FileTypeInfo(FileEndings.DOCX, FileGroups.Document, FileTypes.Docx),
-                new FileTypeInfo(FileEndings.ODT, FileGroups.Document, FileTypes.OpenDocument),
-                new FileTypeInfo(FileEndings.FODT, FileGroups.Document, FileTypes.OpenDocument),
-                new FileTypeInfo(FileEndings.MD, FileGroups.Document, FileTypes.Markdown),
-                new FileTypeInfo(FileEndings.RTF, FileGroups.Document, FileTypes.RichText),
-                new FileTypeInfo(FileEndings.TXT, FileGroups.Document, FileTypes.Text),
-                new FileTypeInfo(ImageFileEndings.JointPhotographicGroup),
-                new FileTypeInfo(ImageFileEndings.GraphicsInterchangeFormat),
-                new FileTypeInfo(ImageFileEndings.PortableNetworkGraphics),
-                new FileTypeInfo(ImageFileEndings.ScalableVectorGraphics),
-                new FileTypeInfo(ImageFileEndings.Bitmap),
-                new FileTypeInfo(ImageFileEndings.Icon),
-                new FileTypeInfo(ImageFileEndings.Photoshop),
-                new FileTypeInfo(ImageFileEndings.TaggedImageFileFormat)
+                new FileTypeInfo(FileEnding.CSS, FileGroup.Code, FileType.Style),
+                new FileTypeInfo(FileEnding.SCSS, FileGroup.Code, FileType.SASS),
+                new FileTypeInfo(FileEnding.JS, FileGroup.Code, FileType.JavaScript),
+                new FileTypeInfo(FileEnding.CSHTML, FileGroup.Code, FileType.View),
+                new FileTypeInfo(FileEnding.CS, FileGroup.Code, FileType.CSharp),
+                new FileTypeInfo(FileEnding.RESX, FileGroup.Resource, FileType.XML),
+                new FileTypeInfo(FileEnding.PDF, FileGroup.Document, FileType.PDF),
+                new FileTypeInfo(FileEnding.DOCX, FileGroup.Document, FileType.Docx),
+                new FileTypeInfo(FileEnding.ODT, FileGroup.Document, FileType.OpenDocument),
+                new FileTypeInfo(FileEnding.FODT, FileGroup.Document, FileType.OpenDocument),
+                new FileTypeInfo(FileEnding.MD, FileGroup.Document, FileType.Markdown),
+                new FileTypeInfo(FileEnding.RTF, FileGroup.Document, FileType.RichText),
+                new FileTypeInfo(FileEnding.TXT, FileGroup.Document, FileType.Text),
+                new FileTypeInfo(ImageFileEnding.JointPhotographicGroup),
+                new FileTypeInfo(ImageFileEnding.GraphicsInterchangeFormat),
+                new FileTypeInfo(ImageFileEnding.PortableNetworkGraphics),
+                new FileTypeInfo(ImageFileEnding.ScalableVectorGraphics),
+                new FileTypeInfo(ImageFileEnding.Bitmap),
+                new FileTypeInfo(ImageFileEnding.Icon),
+                new FileTypeInfo(ImageFileEnding.Photoshop),
+                new FileTypeInfo(ImageFileEnding.TaggedImageFileFormat)
             };
 
         /// <summary>
@@ -61,40 +61,40 @@ namespace LundbeckConsulting.Components
         /// </summary>
         /// <param name="fileEnding">Type of file endings</param>
         /// <returns>IFileTypeInfo element for the defined DocumentFileEndings</returns>
-        public static IFileTypeInfo GetFileInfo(FileEndings fileEnding) => LCStatics.FileTypeDB.Single(inf => inf.Files.Contains(fileEnding));
+        public static IFileTypeInfo GetFileInfo(FileEnding fileEnding) => LCStatics.FileTypeDB.Single(inf => inf.Files.Contains(fileEnding));
 
         /// <summary>
         /// Gets a collection of IFileTypeInfo elements which has equal FileGroup
         /// </summary>
         /// <param name="fileGroup">Type of file file group</param>
         /// <returns>IFileTypeInfo element for the defined FileGtoup</returns>
-        public static IEnumerable<IFileTypeInfo> GetFilesInfo(FileGroups fileGroup) => LCStatics.FileTypeDB.Where(inf => inf.Group == fileGroup);
+        public static IEnumerable<IFileTypeInfo> GetFilesInfo(FileGroup fileGroup) => LCStatics.FileTypeDB.Where(inf => inf.Group == fileGroup);
 
         /// <summary>
         /// Gets a collection of IFileTypeInfo elements which has equal FileType
         /// </summary>
         /// <param name="fileType">Type of file</param>
         /// <returns>IFileTypeInfo element for the defined FileTypes</returns>
-        public static IEnumerable<IFileTypeInfo> GetFilesInfo(FileTypes fileType) => LCStatics.FileTypeDB.Where(inf => inf.FileType == fileType);
+        public static IEnumerable<IFileTypeInfo> GetFilesInfo(FileType fileType) => LCStatics.FileTypeDB.Where(inf => inf.FileType == fileType);
 
         /// <summary>
         /// Gets all the File Info for images
         /// </summary>
         /// <returns>A list of all File Info entries that is an image</returns>
-        public static IEnumerable<IFileTypeInfo> GetImageInfos() => LCStatics.FileTypeDB.Where(inf => inf.Group == FileGroups.Image);
+        public static IEnumerable<IFileTypeInfo> GetImageInfos() => LCStatics.FileTypeDB.Where(inf => inf.Group == FileGroup.Image);
 
         /// <summary>
         /// Get the File Type element with Image File Ending equal to defined ending
         /// </summary>
         /// <param name="imageEnding">Type of image ending</param>
         /// <returns>IfileTypeInfo element for defined Image Ending</returns>
-        public static IFileTypeInfo GetImageInfo(ImageFileEndings imageEnding) => LCStatics.FileTypeDB.Single(inf => inf.ImageFile == imageEnding);
+        public static IFileTypeInfo GetImageInfo(ImageFileEnding imageEnding) => LCStatics.FileTypeDB.Single(inf => inf.ImageFile == imageEnding);
     }
 
     /// <summary>
     /// Known document types
     /// </summary>
-    public enum FileEndings
+    public enum FileEnding
     {
         Unknown = -1,
         PDF = 0,
@@ -125,7 +125,7 @@ namespace LundbeckConsulting.Components
     /// <summary>
     /// Most common file ending for image files
     /// </summary>
-    public enum ImageFileEndings
+    public enum ImageFileEnding
     {
         None = -1,
         JointPhotographicGroup = 0, //JPG/JPEG
@@ -141,7 +141,7 @@ namespace LundbeckConsulting.Components
     /// <summary>
     /// Common file types
     /// </summary>
-    public enum FileTypes
+    public enum FileType
     {
         None = -1,
         Image = 0,
@@ -162,7 +162,7 @@ namespace LundbeckConsulting.Components
     /// <summary>
     /// Most common groups of files
     /// </summary>
-    public enum FileGroups
+    public enum FileGroup
     {
         None = -1,
         Code = 0,
