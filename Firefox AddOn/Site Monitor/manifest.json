@@ -1,0 +1,27 @@
+{
+	"name": "LC Site Monitor",
+	"description": "Monitors every request and displays details about every loaded element on the current page",
+	"version": "1.0.4",
+	"manifest_version": 2,
+	"icons": {
+		"256": "images/logo.png"
+	},
+	"author": "Stein Lundbeck",
+	"developer": {
+		"name": "Stein Lundbeck",
+		"url": "https://github.com/SteinTheRuler"
+	},
+	"default_locale": "en",
+	"browseraction": {
+		"default_icon": "images/logo.png",
+		"default_title": "LC Site Monitor"
+	},
+	"background": {
+		"scripts": [ "scripts/bg-eval.js" ]
+	},
+	"permissions": [
+		"*://developer.mozilla.org/*",
+		"webRequest"
+	],
+	"homepage_url": "https://sitemonitor.lundbeckconsulting.com"
+}

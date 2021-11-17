@@ -3,6 +3,7 @@
     @Author			 : Stein Lundbeck
 */
 
+using LundbeckConsulting.Components.Extensions.Model;
 using LundbeckConsulting.Components.Repos;
 using Microsoft.AspNetCore.Http;
 using System;
@@ -310,5 +311,78 @@ namespace LundbeckConsulting.Components.Extensions
         /// <param name="coll">Collection to process</param>
         /// <returns>True if collection contains elements</returns>
         public static bool HasContent<TEntity>(this IEnumerable<TEntity> coll) where TEntity : class => coll.Count() > 0;
+
+        /// <summary>
+        /// Selects distinct elements
+        /// </summary>
+        /// <typeparam name="TEntity">Type of element</typeparam>
+        /// <typeparam name="TKey">Key to compare with</typeparam>
+        /// <param name="source">Elements to process</param>
+        /// <param name="keySelector">Property to compare with</param>
+        /// <returns>Distinct list</returns>
+        public static IEnumerable<TEntity> DistinctByKey<TEntity, TKey>(this IEnumerable<TEntity> source, Func<TEntity, TKey> keySelector)
+        {
+            HashSet<TKey> seenKeys = new HashSet<TKey>();
+            foreach (TEntity element in source)
+            {
+                if (seenKeys.Add(keySelector(element)))
+                {
+                    yield return element;
+                }
+            }
+        }
+
+        /// <summary>
+        /// Trims all items in collection
+        /// </summary>
+        /// <typeparam name="TEntity">Type of entity in collection</typeparam>
+        /// <param name="coll">Item to process</param>
+        /// <returns>A collection where all items has been trimmed</returns>
+        public static IEnumerable<string> TrimStrings(this IEnumerable<string> coll)
+        {
+            string[] result = coll.ToArray();
+
+            for (int i = 0; i < coll.Count(); i++)
+            {
+                result[i] = coll.ElementAt(i).Trim();
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts an IEnumerable to an array
+        /// </summary>
+        /// <typeparam name="TEntity">Type of entity in collection</typeparam>
+        /// <param name="coll">Collection of entities</param>
+        /// <returns>Array with elements from the collection</returns>
+        public static TEntity[] ToArray<TEntity>(this IEnumerable<TEntity> coll) where TEntity : class
+        {
+            TEntity[] result = new TEntity[coll.Count()];
+
+            for (int i = 0; i < coll.Count(); i++)
+            {
+                result[i] = coll.ElementAt(i);
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts an IEnumerable to an IDictionary<string, string> element used for passing data to a Route
+        /// </summary>
+        /// <param name="coll">Collection to convert</param>
+        /// <returns>IDictionary<string, string> with values from collection</returns>
+        public static IDictionary<string, string> ToRouteData(this IEnumerable<IObjectPropertyModel> coll)
+        {
+            IDictionary<string, string> result = new Dictionary<string, string>();
+
+            foreach(IObjectPropertyModel prop in coll)
+            {
+                result.Add(prop.Name, prop.Value);
+            }
+
+            return result;
+        }
     }
 }

@@ -16,6 +16,9 @@ namespace LundbeckConsulting.Components
     /// </summary>
     public static class LCStatics
     {
+        public const string LCLogoPath = "http://shared.lundbeckconsulting.com/image/lc-logo-md.png";
+        public const string CreatorLogoPath = "http://shared.lundbeckconsulting.com/image/creator-logo-md.png";
+
         /// <summary>
         /// The document and image file endings database
         /// </summary>

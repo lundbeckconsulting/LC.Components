@@ -3,9 +3,13 @@
     @Author			 : Stein Lundbeck
 */
 
+using LundbeckConsulting.Components.Extensions.Model;
 using Newtonsoft.Json;
 using System;
+using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.IO;
+using System.Reflection;
 using System.Runtime.Serialization.Formatters.Binary;
 
 namespace LundbeckConsulting.Components.Extensions
@@ -118,5 +122,63 @@ namespace LundbeckConsulting.Components.Extensions
         /// </summary>
         /// <returns>Normalized string value of object</returns>
         public static string ToNormalized(this object obj) => obj.ToString().ToNormalized();
+
+        /// <summary>
+        /// Applies supplied element if original value is null
+        /// </summary>
+        /// <typeparam name="TType">Type of element</typeparam>
+        /// <param name="obj">Element to evaluate</param>
+        /// <param name="element">Object to return if Obj is null</param>
+        /// <returns>Value of element if original value is null</returns>
+        public static TType ApplyIfNull<TType>(this object obj, TType element) where TType : class
+        {
+            if (obj.Null())
+            {
+                return element;
+            }
+            else
+            {
+                return (TType)obj;
+            }
+        }
+
+        /// <summary>
+        /// Returns a list of properties of the Obj element
+        /// </summary>
+        /// <param name="obj">Element to evaluate</param>
+        /// <returns>List of object properties</returns>
+        public static IEnumerable<IObjectPropertyModel> GetProperties(this object obj)
+        {
+            ICollection<IObjectPropertyModel> result = new Collection<IObjectPropertyModel>();
+
+            foreach (var prop in obj.GetType().GetProperties(BindingFlags.Instance | BindingFlags.Public))
+            {
+                result.Add(new ObjectPropertyModel()
+                {
+                    Info = prop,
+                    Name = prop.Name,
+                    Value = prop.GetValue(obj, null).ToString()
+                });
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Converts an objects Properties and values to an IDictinary<string, string> collection
+        /// </summary>
+        /// <param name="obj">Element to evaluate</param>
+        /// <returns>Collection of property names and values</returns>
+        public static IDictionary<string, string> ToRouteData(this object obj)
+        {
+            IDictionary<string, string> result = new Dictionary<string, string>();
+
+            foreach (IObjectPropertyModel prop in obj.GetProperties())
+            {
+                result.Add(prop.Name, prop.Value);
+            }
+
+            return result;
+        }
     }
 }

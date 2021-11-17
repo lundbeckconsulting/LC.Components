@@ -45,6 +45,25 @@ namespace LundbeckConsulting.Components.Extensions
         }
 
         /// <summary>
+        /// Adds the specified item in a params collection
+        /// </summary>
+        /// <typeparam name="TEntity">Type of entity in collection</typeparam>
+        /// <param name="coll">The collection to add the items to</param>
+        /// <param name="items">Elements to add</param>
+        /// <returns>Collection with the items added</returns>
+        public static ICollection<TEntity> AddRangeParams<TEntity>(this ICollection<TEntity> coll, params TEntity[] items)
+        {
+            ICollection<TEntity> result = new Collection<TEntity>();
+
+            foreach(TEntity ent in items)
+            {
+                result.Add(ent);
+            }
+
+            return result;
+        }
+
+        /// <summary>
         /// Deletes elements with index between start and end
         /// </summary>
         /// <typeparam name="TEntity">Type of object in collection</typeparam>

@@ -97,6 +97,6 @@ namespace LundbeckConsulting.Components
         public int PartThree { get; set; }
         public int PartFour { get; set; }       
         public IPAddress Address => IPAddress.Parse(this.ToString());
-        public new string ToString() => $"{this.PartOne}.{this.PartTwo}.{this.PartThree}.{this.PartFour}";
+        public override string ToString() => $"{this.PartOne}.{this.PartTwo}.{this.PartThree}.{this.PartFour}";
     }
 }

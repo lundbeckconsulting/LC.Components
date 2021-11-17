@@ -4,7 +4,6 @@
 */
 
 using Microsoft.AspNetCore.Razor.TagHelpers;
-using System.Collections.Generic;
 
 namespace LundbeckConsulting.Components.Extensions
 {

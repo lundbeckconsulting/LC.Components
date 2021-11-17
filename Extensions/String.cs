@@ -5,11 +5,9 @@
 
 using LundbeckConsulting.Components.Repos;
 using Microsoft.AspNetCore.Identity;
-using System;
-using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Globalization;
-using System.IO;
+using System;
 using System.Text;
 using System.Text.RegularExpressions;
 
@@ -287,11 +285,11 @@ namespace LundbeckConsulting.Components.Extensions
         {
             var t = new UpperInvariantLookupNormalizer();
 
-            return t.NormalizeName(str);
+            return t.Normalize(str);
         }
 
         /// <summary>
-        /// Returns extension if string is recognised as path
+        /// Returns extension if string is recognized as path
         /// </summary>
         /// <param name="str">Element to process</param>
         /// <returns>File extension</returns>
@@ -362,6 +360,69 @@ namespace LundbeckConsulting.Components.Extensions
 
             return tmp;
         }
+
+        /// <summary>
+        /// Determines if the string contains multiple values
+        /// </summary>
+        /// <param name="str">String to evaluate</param>
+        /// <param name="match">Check if string contains all or one of values</param>
+        /// <param name="values">The values to look for in string</param>
+        /// <returns>Indicates if the string contains values</returns>
+        public static bool Contains(this string str, ContainsMatchTypes match, params string[] values)
+        {
+            bool result = true;
+
+            if (match == ContainsMatchTypes.All)
+            {
+                foreach(string s in values)
+                {
+                    if (!str.Contains(s))
+                    {
+                        result = false;
+                    }
+                }
+            }
+            else if (match == ContainsMatchTypes.OneOf)
+            {
+                result = false;
+
+                foreach(string s in values)
+                {
+                    if(str.Contains(s))
+                    {
+                        result = true;
+                    }
+                }
+            }
+
+            return result;
+        }
+
+        /// <summary>
+        /// Indicates if two strings are equal without checking case
+        /// </summary>
+        /// <param name="str">String to process</param>
+        /// <param name="compare">String to compare</param>
+        /// <returns>True if strings are equal</returns>
+        public static bool EqualString(this string str, string compare) => str.ToNormalized() == compare.ToNormalized();
+
+        /// <summary>
+        /// Repeats a string number of times
+        /// </summary>
+        /// <param name="str">Value to repeat</param>
+        /// <param name="count">Repeat count</param>
+        /// <returns>String with str repeated</returns>
+        public static string RepeatStr(this string str, int count)
+        {
+            StringBuilder result = new StringBuilder();
+
+            for (int i = 0; i < count; i++)
+            {
+                result.Append(str);
+            }
+
+            return result.ToString();
+        }
     }
 
     /// <summary>
@@ -382,5 +443,11 @@ namespace LundbeckConsulting.Components.Extensions
     {
         Default,
         SHA256
+    }
+
+    public enum ContainsMatchTypes
+    {
+        OneOf,
+        All
     }
 }
